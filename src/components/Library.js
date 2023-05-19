@@ -1,10 +1,29 @@
 import { useState } from "react"
 import Shelf from "./Shelf"
 import NewShelfForm from "./NewShelfForm";
-import { BrowserRouter, Link, NavLink, Route, Routes } from "react-router-dom";
+import { Link, NavLink, Route, Routes } from "react-router-dom";
 
 
 const Library = () => {
+  const [shelves, setShelves] = useState([{
+    genre: 'Fiction',
+    books: [
+      { title: 'To Kill a Mockingbird', author: 'Harper Lee' },
+      { title: '1984', author: 'George Orwell' },
+      { title: 'Beloved', author: 'Toni Morrison' },
+      { title: 'The Color Purple', author: 'Alice Walker' },
+    ],
+  },
+  {
+    genre: 'Non-Fiction',
+    books: [
+      { title: 'Sapiens', author: 'Yuval Noah Harari' },
+      { title: 'Beloved', author: 'Toni Morrison' },
+      { title: 'The Audacity Of Hope', author: 'Barack Obama' },
+      { title: 'The Autobiography of Malcolm X', author: 'Alex Haley' },
+      { title: 'Between The World And Me', author: 'Ta-Nehasi Coates' },
+    ],
+  },])
   const [expandedShelves, setExpandedShelves] = useState(shelves.map(() => false));
 
   const addShelf = (newShelf) => {
@@ -25,25 +44,6 @@ const Library = () => {
   const toggleShelf = (index) => {
     setExpandedShelves(expandedShelves.map((expanded, i) => (i === index ? !expanded : expanded)));
   };
-  const [shelves, setShelves] = useState([{
-    genre: 'Fiction',
-    books: [
-      { title: 'To Kill a Mockingbird', author: 'Harper Lee' },
-      { title: '1984', author: 'George Orwell' },
-      { title: 'Beloved', author: 'Toni Morrison' },
-      { title: 'The Color Purple', author: 'Alice Walker' },
-    ],
-  },
-  {
-    genre: 'Non-Fiction',
-    books: [
-      { title: 'Sapiens', author: 'Yuval Noah Harari' },
-      { title: 'Beloved', author: 'Toni Morrison' },
-      { title: 'The Audacity Of Hope', author: 'Barack Obama' },
-      { title: 'The Autobiography of Malcolm X', author: 'Alex Haley' },
-      { title: 'Between The World And Me', author: 'Ta-Nehasi Coates' },
-    ],
-  },])
 
   return (
     
